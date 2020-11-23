@@ -22,7 +22,8 @@
         @keyup.left="goW"
         @keyup.right="goE"
         @keyup.enter="goS"
-        @keyup.delete="goPrev"
+        @keyup.delete="clearAndGoPrev"
+        @keyup.space="dirH = !dirH"
         @focus="updateFocus(idx)"
         @input="validateCell(idx,true)"
         @click="dirH = !dirH"
@@ -90,15 +91,33 @@ export default {
     }
   },
   methods: {
+    posCaretAtEnd() {
+      let el = this.$refs[`cell${this.currentFocus}`][0]
+      // Source: https://davidwalsh.name/caret-end
+      if (typeof el.selectionStart == "number") {
+        el.selectionStart = el.selectionEnd = el.value.length;
+      } else if (typeof el.createTextRange != "undefined") {
+        el.focus();
+        var range = el.createTextRange();
+        range.collapse(false);
+        range.select();
+      }
+    },
     updateFocus(idx) {
       this.currentFocus = idx;
+      this.posCaretAtEnd()
     },
     validateCell(idx, step) {
-      if (this.values[idx] == "")
-        return
+      if (this.values[idx] === "" || this.values[idx].slice(-1) == " " || this.values[idx].charAt(0) == " ") {
+        return this.values[idx] = this.values[idx].trim()
+      }
       this.values[idx] = this.values[idx].toUpperCase().slice(-1)
       if(step)
         this.goNext()
+    },
+    clearAndGoPrev() {
+      this.values[this.currentFocus] = ""
+      this.goPrev()
     },
     goNext() {
       let next = this.currentFocus + (this.dirH?1:this.width);
@@ -111,6 +130,7 @@ export default {
         this.$refs[`cell${next}`][0].focus()
     },
     goN() {
+      this.posCaretAtEnd()
       let next = this.currentFocus - this.width;
       if (this.$refs[`cell${next}`])
         this.$refs[`cell${next}`][0].focus()
@@ -121,6 +141,7 @@ export default {
         this.$refs[`cell${next}`][0].focus()
     },
     goW() {
+      this.posCaretAtEnd()
       let next = this.currentFocus - 1;
       if (this.$refs[`cell${next}`])
         this.$refs[`cell${next}`][0].focus()
@@ -215,6 +236,9 @@ body {
   -moz-box-shadow: none;
   box-shadow: none;
 
+  color: transparent;
+  text-shadow: 0 0 0 blue;
+
   font: inherit;
   width: 100%;
   height: calc(4rem - 4px);
@@ -222,7 +246,6 @@ body {
   font-size: 2rem;
   font-weight: 500;
   text-align: center;
-  color: blue;
   outline: none;
 }
 .cell.active .cell-input:focus {
