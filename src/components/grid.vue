@@ -25,6 +25,7 @@
         @keyup.delete="clearAndGoPrev"
         @keyup.space="dirH = !dirH"
         @focus="updateFocus(idx)"
+        @blur="clearFocus"
         @input="validateCell(idx,true)"
         @click="dirH = !dirH"
         class="cell-input"
@@ -106,6 +107,10 @@ export default {
     updateFocus(idx) {
       this.currentFocus = idx;
       this.posCaretAtEnd()
+    },
+    clearFocus() {
+      this.currentFocus = undefined;
+      this.activeCells = []
     },
     validateCell(idx, step) {
       if (this.values[idx] === "" || this.values[idx].slice(-1) == " " || this.values[idx].charAt(0) == " ") {
