@@ -35,20 +35,22 @@
 </template>
 
 <script>
-import layout from '../layouts/xmas.json';
-
 export default {
   data() {
     return {
-      width: layout.width,
-      layout: layout.cells,
-      values: new Array(layout.length),
+      values: [],
       dirH: true,
       elInFocus: undefined,
       currentFocus: undefined
     }
   },
   computed: {
+    width() {
+      return this.$root.width
+    },
+    layout() {
+      return this.$root.cells
+    },
     activeCells() {
       if (this.currentFocus === undefined)
         return []
