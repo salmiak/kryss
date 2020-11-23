@@ -10,7 +10,8 @@
         endh: cell.endh,
         endv: cell.endv,
         turnh: cell.turnh,
-        turnv: cell.turnv
+        turnv: cell.turnv,
+        active: activeCells.indexOf(idx) !== -1
         }]"
       :data-nbr="cell.nbr">
       <input
@@ -43,6 +44,49 @@ export default {
       dirH: true,
       elInFocus: undefined,
       currentFocus: undefined
+    }
+  },
+  computed: {
+    activeCells() {
+      let step = (this.dirH?1:this.width);
+      let o = [this.currentFocus];
+
+      let i = this.currentFocus;
+      let go = true;
+
+      while(go && i < this.layout.length) {
+        o.push(i);
+
+        if (this.dirH) {
+          go = go && !this.layout[i].endh
+        } else {
+          go = go && !this.layout[i].endv
+        }
+
+        i += step;
+
+        go = go && this.layout[i] !== 0;
+        go = go && i%this.width
+      }
+
+      i = this.currentFocus;
+      go = true;
+
+      while(go && i > -1) {
+        o.push(i);
+
+        i -= step;
+
+        go = go && this.layout[i];
+
+        if (this.dirH) {
+          go = go && !this.layout[i].endh
+          go = go && (i+1)%this.width
+        } else {
+          go = go && !this.layout[i].endv
+        }
+      }
+      return o
     }
   },
   methods: {
@@ -90,9 +134,15 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 * {
   box-sizing: border-box;
+}
+*::selection {
+  background: transparent;
+}
+body {
+  background: pink;
 }
 .grid {
   display: inline-grid;
@@ -152,6 +202,9 @@ export default {
   font-weight: 600;
   z-index: 100;
 }
+.cell.active .cell-input {
+  background: red;
+}
 
 .cell-input {
   -webkit-appearance: none;
@@ -172,7 +225,7 @@ export default {
   color: blue;
   outline: none;
 }
-.cell-input:focus {
-  background: lightblue;
+.cell.active .cell-input:focus {
+  background: yellow;
 }
 </style>
