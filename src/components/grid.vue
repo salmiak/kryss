@@ -51,6 +51,9 @@ export default {
     layout() {
       return this.$root.cells
     },
+    title() {
+      return this.$root.title
+    },
     activeCells() {
       if (this.currentFocus === undefined)
         return []
