@@ -27,7 +27,7 @@
         @focus="updateFocus(idx)"
         @blur="clearFocus"
         @input="validateCell(idx,true)"
-        @click="dirH = !dirH"
+        @mousedown="toggleDir(idx)"
         class="cell-input"
         v-model="values[idx]" />
     </div>
@@ -111,6 +111,11 @@ export default {
     clearFocus() {
       this.currentFocus = undefined;
       this.activeCells = []
+    },
+    toggleDir(idx) {
+      if (idx === this.currentFocus) {
+        this.dirH = !this.dirH
+      }
     },
     validateCell(idx, step) {
       if (this.values[idx] === "" || this.values[idx].slice(-1) == " " || this.values[idx].charAt(0) == " ") {
