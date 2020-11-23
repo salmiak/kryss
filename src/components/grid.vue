@@ -40,8 +40,8 @@ import layout from '../layouts/xmas.json';
 export default {
   data() {
     return {
-      width: 10,
-      layout,
+      width: layout.width,
+      layout: layout.cells,
       values: new Array(layout.length),
       dirH: true,
       elInFocus: undefined,
