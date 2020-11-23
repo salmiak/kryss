@@ -50,6 +50,9 @@ export default {
   },
   computed: {
     activeCells() {
+      if (this.currentFocus === undefined)
+        return []
+
       let step = (this.dirH?1:this.width);
       let o = [this.currentFocus];
 
@@ -110,7 +113,6 @@ export default {
     },
     clearFocus() {
       this.currentFocus = undefined;
-      this.activeCells = []
     },
     toggleDir(idx) {
       if (idx === this.currentFocus) {
