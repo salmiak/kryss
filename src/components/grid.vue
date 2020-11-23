@@ -224,7 +224,7 @@ body {
   z-index: 100;
 }
 .cell.active .cell-input {
-  background: red;
+  background: LIGHTCYAN;
 }
 
 .cell-input {
@@ -249,6 +249,6 @@ body {
   outline: none;
 }
 .cell.active .cell-input:focus {
-  background: yellow;
+  background: TURQUOISE;
 }
 </style>
