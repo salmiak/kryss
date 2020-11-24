@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App.vue'
 import router from './router'
-//import layout from './layouts/xmas.json';
 
 Vue.use(VueResource);
 Vue.config.productionTip = false
@@ -27,7 +26,8 @@ new Vue({
   },
   methods: {
     loadLayout() {
-      this.$http.get(`/layouts/${this.$route.params.name}.json`).then((response) => {
+      let publicPath = process.env.BASE_URL
+      this.$http.get(`${publicPath}layouts/${this.$route.params.name}.json`).then((response) => {
         if (response.data) {
           this.cells = response.data.cells || []
           this.width = response.data.width || 0
