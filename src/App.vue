@@ -1,19 +1,15 @@
 <template>
   <div id="app">
     <h1>{{$root.title}}</h1>
-    <Grid />
-    <p>Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag].</p>
+    <router-view/>
+    <p v-if="$root.width">Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag].</p>
   </div>
 </template>
 
 <script>
-import Grid from './components/grid.vue'
 
 export default {
-  name: 'App',
-  components: {
-    Grid
-  }
+  name: 'App'
 }
 </script>
 

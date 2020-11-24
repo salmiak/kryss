@@ -1,7 +1,8 @@
 <template lang="html">
   <div
     :style="{'grid-template-columns': `repeat(${width}, 1fr)`}"
-    class="grid">
+    class="grid"
+    v-if="layout.length">
     <div
       v-for="(cell,idx) in layout"
       :key="idx"

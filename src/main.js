@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App.vue'
+import router from './router'
 //import layout from './layouts/xmas.json';
 
 Vue.use(VueResource);
@@ -11,15 +12,34 @@ new Vue({
   data() {
     return {
       cells: [],
-      width: 1,
-      title: "Loading"
+      width: 0,
+      title: "Loading…"
     }
   },
+  router,
   mounted() {
-    this.$http.get('/layouts/xmas.json').then((response) => {
-      this.cells = response.data.cells || []
-      this.width = response.data.width || 1
-      this.title = response.data.title || "Somthing is wrong"
-    })
+    this.loadLayout()
+  },
+  watch: {
+    $route (){
+      this.loadLayout()
+    }
+  },
+  methods: {
+    loadLayout() {
+      this.$http.get(`/layouts/${this.$route.params.name}.json`).then((response) => {
+        if (response.data) {
+          this.cells = response.data.cells || []
+          this.width = response.data.width || 0
+          this.title = response.data.title || "Somthing is wrong"
+        } else {
+          this.title = "Somthing is wrong"
+        }
+      }, () => {
+        this.cells = []
+        this.width = 0
+        this.title = "Somthing is wrong"
+      })
+    }
   }
 }).$mount('#app')
