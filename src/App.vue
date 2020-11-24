@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>{{$root.title}}</h1>
+    <h1 v-if="$root.title">{{$root.title}}</h1>
     <router-view/>
     <p v-if="$root.width">Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag].</p>
   </div>

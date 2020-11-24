@@ -26,19 +26,23 @@ new Vue({
   },
   methods: {
     loadLayout() {
+      if (!this.$route.params.name) {
+        return this.title = "Ange kryssnamn i URL:en"
+      }
+
       let publicPath = process.env.BASE_URL
       this.$http.get(`${publicPath}layouts/${this.$route.params.name}.json`).then((response) => {
         if (response.data) {
           this.cells = response.data.cells || []
           this.width = response.data.width || 0
-          this.title = response.data.title || "Somthing is wrong"
+          this.title = response.data.title || undefined
         } else {
-          this.title = "Somthing is wrong"
+          this.title = "Något är paj"
         }
       }, () => {
         this.cells = []
         this.width = 0
-        this.title = "Somthing is wrong"
+        this.title = "Något gick snett"
       })
     }
   }
