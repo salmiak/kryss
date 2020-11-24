@@ -25,8 +25,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## ToDo
-- Store values in cookie or simillar
-  - Add clear button
+- Add cookie notice
+- Better support for iOS devices
 ~ Add support for realtime collaboration
   ~ Backend
 ~ Layout editor

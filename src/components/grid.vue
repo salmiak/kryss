@@ -37,6 +37,7 @@
 
 <script>
 export default {
+  name: "Grid",
   data() {
     return {
       values: [],
@@ -45,7 +46,25 @@ export default {
       currentFocus: undefined
     }
   },
+  mounted() {
+    if (localStorage.getItem(this.storeTarget))
+      return this.values = JSON.parse(localStorage.getItem(this.storeTarget))
+    this.values = []
+  },
+  watch: {
+    storeTarget() {
+      if (localStorage.getItem(this.storeTarget))
+        return this.values = JSON.parse(localStorage.getItem(this.storeTarget))
+      this.values = []
+    },
+    values() {
+      localStorage.setItem(this.storeTarget, JSON.stringify(this.values));
+    }
+  },
   computed: {
+    storeTarget() {
+      return `values-${this.$route.params.name}`
+    },
     width() {
       return this.$root.width
     },
