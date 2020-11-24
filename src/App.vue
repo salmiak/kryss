@@ -56,4 +56,27 @@ p {
   min-height: 100vh;
   min-width: 100vw;
 }
+
+html {
+  font-size: 16px;
+  --borderWidth: 2px;
+}
+@media only screen and (max-width: 680px) {
+  html {
+    font-size: 12px;
+    --borderWidth: 2px;
+  }
+}
+@media only screen and (max-width: 490px) {
+  html {
+    font-size: 10px;
+    --borderWidth: 1px;
+  }
+}
+@media only screen and (max-width: 424px) {
+  html {
+    font-size: 7.5px;
+    --borderWidth: 1px;
+  }
+}
 </style>

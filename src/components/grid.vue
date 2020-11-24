@@ -205,14 +205,14 @@ body {
 .grid {
   display: inline-grid;
   margin: 0 auto;
-  border: 2px solid blue;
+  border: var(--borderWidth) solid blue;
   justify-content: center;
 }
 .cell {
   width: 4rem;
   height: 4rem;
   line-height: 4rem;
-  border: 2px solid blue;
+  border: var(--borderWidth) solid blue;
   text-align: center;
   position: relative;
   z-index: 0;
