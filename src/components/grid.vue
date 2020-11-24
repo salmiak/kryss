@@ -272,6 +272,7 @@ body {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  border-radius: 0;
 
   color: transparent;
   text-shadow: 0 0 0 blue;
