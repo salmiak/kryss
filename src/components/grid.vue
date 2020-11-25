@@ -200,25 +200,25 @@ export default {
   background: transparent;
 }
 body {
-  background: pink;
+  background: var(--clr-bg);
 }
 .grid {
   display: inline-grid;
   margin: 0 auto;
-  border: var(--borderWidth) solid blue;
+  border: var(--borderWidth) solid var(--clr-fg);
   justify-content: center;
 }
 .cell {
   width: 4rem;
   height: 4rem;
   line-height: 4rem;
-  border: var(--borderWidth) solid blue;
+  border: var(--borderWidth) solid var(--clr-fg);
   text-align: center;
   position: relative;
   z-index: 0;
 }
 .cell.black {
-  background: blue;
+  background: var(--clr-fg);
 }
 .cell.endh {
   border-right-width: 0.5rem;
@@ -228,7 +228,7 @@ body {
 }
 .cell[data-nbr]::before {
   content: attr(data-nbr);
-  color: blue;
+  color: var(--clr-fg);
   position: absolute;
   top: 0;
   left: 0.25rem;
@@ -239,7 +239,7 @@ body {
 }
 .cell.turnh::after {
   content: '\21B3';
-  color: blue;
+  color: var(--clr-fg);
   position: absolute;
   bottom: -.125rem;;
   left: 0.25rem;
@@ -251,7 +251,7 @@ body {
 .cell.turnv::after {
   content: '\21B5';
   transform: rotate(-90deg);
-  color: blue;
+  color: var(--clr-fg);
   position: absolute;
   top: 0.4rem;
   right: -.25rem;
@@ -275,7 +275,7 @@ body {
   border-radius: 0;
 
   color: transparent;
-  text-shadow: 0 0 0 blue;
+  text-shadow: 0 0 0 var(--clr-fg);
 
   font: inherit;
   width: 100%;

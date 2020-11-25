@@ -28,36 +28,12 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  color: blue;
-}
-h1 {
-  margin-bottom: 1rem;
-}
-p {
-  margin-top: 1rem;
-  font-weight: 500;
-}
-.btn {
-  display: inline-block;
-  border: 2px solid blue;
-  padding: 2px 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
+  color: var(--clr-fg);
 }
 
 html {
+  --clr-bg: pink;
+  --clr-fg: blue;
   font-size: 16px;
   --borderWidth: 2px;
 }
@@ -78,5 +54,36 @@ html {
     font-size: 7.5px;
     --borderWidth: 1px;
   }
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+p {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.btn {
+  display: inline-block;
+  border: 2px solid var(--clr-fg);
+  padding: 2px 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover {
+  color: var(--clr-bg);
+  background: var(--clr-fg);
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 </style>
