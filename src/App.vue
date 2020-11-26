@@ -2,7 +2,7 @@
   <div id="app">
     <h1 v-if="$root.title">{{$root.title}}</h1>
     <router-view :key="refreshKey"/>
-    <p v-if="$root.width">Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag]. <span class="btn" @click="clearValues">Rensa planen</span></p>
+    <p v-if="$root.width">Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag]. <span class="btn" @click="clearValues">Rensa planen</span><br/>När du fyller i planen sparas den som en kaka på din dator.</p>
   </div>
 </template>
 

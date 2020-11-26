@@ -25,7 +25,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## ToDo
-- Add cookie notice
+- Add arrows as SVGs.
 - Better support for iOS devices
 ~ Add support for realtime collaboration
   ~ Backend
