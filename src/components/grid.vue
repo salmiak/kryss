@@ -158,12 +158,12 @@ export default {
     },
     goNext() {
       let next = this.currentFocus + (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`])
+      if (this.$refs[`cell${next}`] && (!this.dirH || next%this.width))
         this.$refs[`cell${next}`][0].focus()
     },
     goPrev() {
       let next = this.currentFocus - (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`])
+      if (this.$refs[`cell${next}`] && (!this.dirH || this.currentFocus%this.width))
         this.$refs[`cell${next}`][0].focus()
     },
     goN() {
@@ -180,12 +180,12 @@ export default {
     goW() {
       this.posCaretAtEnd()
       let next = this.currentFocus - 1;
-      if (this.$refs[`cell${next}`])
+      if (this.$refs[`cell${next}`] && this.currentFocus%this.width)
         this.$refs[`cell${next}`][0].focus()
     },
     goE() {
       let next = this.currentFocus + 1;
-      if (this.$refs[`cell${next}`])
+      if (this.$refs[`cell${next}`] && next%this.width)
         this.$refs[`cell${next}`][0].focus()
     }
   }
