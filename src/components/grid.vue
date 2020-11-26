@@ -89,6 +89,7 @@ export default {
 
         if (this.dirH) {
           go = go && !this.layout[i].endh
+          go = go && (i+1)%this.width
         } else {
           go = go && !this.layout[i].endv
         }
@@ -96,7 +97,6 @@ export default {
         i += step;
 
         go = go && this.layout[i] !== 0;
-        go = go && i%this.width
       }
 
       i = this.currentFocus;
