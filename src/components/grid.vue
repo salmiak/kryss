@@ -238,26 +238,23 @@ body {
   z-index: 100;
 }
 .cell.turnh::after {
-  content: '\21B3';
-  color: var(--clr-fg);
+  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 16 12' style='enable-background:new 0 0 16 12;' xml:space='preserve'><polygon style='fill:blue;' points='12,9 2,9 0,9 0,7 0,0 2,0 2,7 12,7 12,4 16,8 12,12 '/></svg>");
   position: absolute;
-  bottom: -.125rem;;
-  left: 0.25rem;
-  line-height: 1.25rem;
-  font-size: 1.414rem;
-  font-weight: 600;
+  bottom: 0.3rem;;
+  left: 0.4rem;
+  width: 1rem;
+  height: 0.75rem;
+  line-height: 1rem;
   z-index: 100;
 }
 .cell.turnv::after {
-  content: '\21B5';
-  transform: rotate(-90deg);
-  color: var(--clr-fg);
+  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 12 16' style='enable-background:new 0 0 12 16;' xml:space='preserve'><polygon style='fill:blue;' points='9,12 9,2 9,0 7,0 0,0 0,2 7,2 7,12 4,12 8,16 12,12 '/></svg>");
   position: absolute;
   top: 0.4rem;
-  right: -.25rem;
+  right: 0.3rem;
+  width: 0.75rem;
+  height: 1rem;
   line-height: 1rem;
-  font-size: 1.414rem;
-  font-weight: 600;
   z-index: 100;
 }
 .cell.active .cell-input {
