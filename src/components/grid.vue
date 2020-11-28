@@ -276,7 +276,7 @@ body {
 
   font: inherit;
   width: 100%;
-  height: calc(4rem - 4px);
+  height: calc(4rem - var(--borderWidth));
   max-height: 100%;
   font-size: 2rem;
   font-weight: 500;

@@ -51,7 +51,7 @@ html {
 }
 @media only screen and (max-width: 424px) {
   html {
-    font-size: 7.5px;
+    font-size: 8px;
     --borderWidth: 1px;
   }
 }
