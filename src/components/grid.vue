@@ -238,7 +238,7 @@ body {
   z-index: 100;
 }
 .cell.turnh::after {
-  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 16 12' style='enable-background:new 0 0 16 12;' xml:space='preserve'><polygon style='fill:blue;' points='12,9 2,9 0,9 0,7 0,0 2,0 2,7 12,7 12,4 16,8 12,12 '/></svg>");
+  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 16 12' style='enable-background:new 0 0 16 12;' xml:space='preserve'><polygon style='fill:blue;' points='8,8 2,8 0,8 0,6 0,0 3,0 3,5 8,5 8,1 14,6.5 8,12 '/></svg>");
   position: absolute;
   bottom: 0.3rem;;
   left: 0.4rem;
@@ -248,7 +248,7 @@ body {
   z-index: 100;
 }
 .cell.turnv::after {
-  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 12 16' style='enable-background:new 0 0 12 16;' xml:space='preserve'><polygon style='fill:blue;' points='9,12 9,2 9,0 7,0 0,0 0,2 7,2 7,12 4,12 8,16 12,12 '/></svg>");
+  content: url("data:image/svg+xml; utf8, <svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 12 16' style='enable-background:new 0 0 12 16;' xml:space='preserve'><polygon style='fill:blue;' points='8,9 8,2 8,0 6,0 0,0 0,3 5,3 5,9 1,9 6.5,14 12,9'/></svg>");
   position: absolute;
   top: 0.4rem;
   right: 0.3rem;
