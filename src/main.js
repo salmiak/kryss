@@ -25,11 +25,13 @@ new Vue({
     }
   },
   methods: {
+    this.title = "Loading…"
+    
     loadLayout() {
       if (!this.$route.params.name) {
         this.cells = []
         this.width = 0
-        return this.title = this.$route.path==='/404'?"Fel kryssnamn, försök igen":"Ange kryssnamn"
+        return this.title = this.$route.path==='/404'?"Fel kryssnamn, försök igen ":"Ange kryssnamn"
       }
 
       let publicPath = process.env.BASE_URL
