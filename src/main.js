@@ -25,9 +25,9 @@ new Vue({
     }
   },
   methods: {
-    this.title = "Loading…"
-    
     loadLayout() {
+      this.title = "Loading…"
+
       if (!this.$route.params.name) {
         this.cells = []
         this.width = 0
