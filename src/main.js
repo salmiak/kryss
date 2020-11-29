@@ -17,11 +17,13 @@ new Vue({
   },
   router,
   mounted() {
-    this.loadLayout()
+    if (this.$route.path !== '/creator')
+      this.loadLayout()
   },
   watch: {
     $route (){
-      this.loadLayout()
+      if (this.$route.path !== '/creator')
+        this.loadLayout()
     }
   },
   methods: {
