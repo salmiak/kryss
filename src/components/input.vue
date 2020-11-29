@@ -3,13 +3,17 @@
     <input
       v-model="inputValue"
       @keydown.enter = "navigate"/>
-    <span class="btn btn-big" @click="navigate">Kör &rarr;</span>
+    <span class="btn btn-big" @click="navigate">Kör <arrow dir="e" size="2" /></span>
   </div>
 </template>
 
 <script>
+import Arrow from './arrow.vue'
 export default {
   name: "Input",
+  components: {
+    Arrow
+  },
   data() {
     return {
       inputValue: undefined

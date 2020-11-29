@@ -2,14 +2,18 @@
   <div id="app">
     <h1 v-if="$root.title">{{$root.title}}</h1>
     <router-view :key="refreshKey"/>
-    <p v-if="$root.width">Navigera med &larr; &uarr; &darr; &rarr; och byt skrivriktning med [mellanslag]. <span class="btn" @click="clearValues">Rensa planen</span><br/>När du fyller i planen sparas den som en kaka på din dator.</p>
+    <p v-if="$root.width">Navigera med <arrow dir="w" /> <arrow dir="n" /> <arrow dir="s" /> <arrow dir="e" />  och byt skrivriktning med [mellanslag]. <span class="btn" @click="clearValues">Rensa planen</span><br/>Obs! När du fyller i planen sparas den som en kaka på din dator.</p>
   </div>
 </template>
 
 <script>
+import Arrow from './components/arrow.vue';
 
 export default {
   name: 'App',
+  components: {
+    Arrow
+  },
   data() {
     return {
       refreshKey:0 //https://michaelnthiessen.com/force-re-render/
@@ -73,6 +77,9 @@ p {
 .btn:hover {
   color: var(--clr-bg);
   background: var(--clr-fg);
+}
+.btn:hover svg {
+  fill: var(--clr-bg);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
