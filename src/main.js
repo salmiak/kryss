@@ -27,7 +27,9 @@ new Vue({
   methods: {
     loadLayout() {
       if (!this.$route.params.name) {
-        return this.title = "Ange kryssnamn i URL:en"
+        this.cells = []
+        this.width = 0
+        return this.title = this.$route.path==='/404'?"Fel kryssnamn, försök igen":"Ange kryssnamn"
       }
 
       let publicPath = process.env.BASE_URL
@@ -43,6 +45,7 @@ new Vue({
         this.cells = []
         this.width = 0
         this.title = "Något gick snett"
+        this.$router.history.push('/404')
       })
     }
   }
