@@ -28,7 +28,7 @@
         @focus="updateFocus(idx)"
         @blur="clearFocus"
         @input="validateCell(idx,true)"
-        @mousedown="toggleDir(idx)"
+        @click="toggleDir(idx)"
         class="cell-input"
         v-model="values[idx]" />
     </div>
