@@ -28,8 +28,7 @@
         @focus="updateFocus(idx)"
         @blur="clearFocus"
         @input="validateCell(idx,true)"
-        @mousedown="toggleDir(idx, 'mus')"
-        @touchstart="toggleDir(idx, 'tou')"
+        @mousedown="toggleDir(idx)"
         class="cell-input"
         v-model="values[idx]" />
     </div>
@@ -140,8 +139,7 @@ export default {
     clearFocus() {
       this.currentFocus = undefined;
     },
-    toggleDir(idx, log) {
-      console.log({log}) // eslint-disable-line no-console
+    toggleDir(idx) {
       if (idx === this.currentFocus) {
         this.dirH = !this.dirH
       }
