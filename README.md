@@ -26,6 +26,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## ToDo
 - Better support for iOS devices
+- Add link to Gather.town
+  - With instruction on how to connect correctly
 ~ Add support for realtime collaboration
   ~ Backend
 ~ Layout editor
