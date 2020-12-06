@@ -12,7 +12,8 @@ new Vue({
     return {
       cells: [],
       width: 0,
-      title: "Loading…"
+      title: "Loading…",
+      gatherlink: undefined
     }
   },
   router,
@@ -31,6 +32,7 @@ new Vue({
       if (!this.$route.params.name) {
         this.cells = []
         this.width = 0
+        this.gatherlink = undefined
         return this.title = this.$route.path==='/404'?"Fel kryssnamn, försök igen ":"Ange kryssnamn"
       }
 
@@ -40,6 +42,7 @@ new Vue({
           this.cells = response.data.cells || []
           this.width = response.data.width || 0
           this.title = response.data.title || undefined
+          this.gatherlink = response.data.gatherlink || undefined
         } else {
           this.title = "Något är paj"
         }
@@ -47,6 +50,7 @@ new Vue({
         this.cells = []
         this.width = 0
         this.title = "Något gick snett"
+        this.gatherlink = undefined
         this.$router.history.push('/404')
       })
     }

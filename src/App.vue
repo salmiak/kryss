@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <a
-      href="https://gather.town/app/zmMawEVWm6ZpDXN7/krysscross"
+      :href="gatherlink"
       target="_blank"
       class="gatherlink"
       :class="{collapsed: collapsGatherLink}"
@@ -35,6 +35,11 @@ export default {
     clearValues() {
       localStorage.setItem(`values-${this.$route.params.name}`, JSON.stringify([]));
       this.refreshKey ++;
+    }
+  },
+  computed: {
+    gatherlink() {
+      return this.$root.gatherlink || "https://gather.town/app/zmMawEVWm6ZpDXN7/krysscross"
     }
   }
 }
