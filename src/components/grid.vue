@@ -158,13 +158,21 @@ export default {
     },
     goNext() {
       let next = this.currentFocus + (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`] && (!this.dirH || next%this.width))
+      if (this.$refs[`cell${next}`] && (!this.dirH || next%this.width)) {
         this.$refs[`cell${next}`][0].focus()
+        if (this.layout[next].turnv || this.layout[next].turnh) {
+          this.dirH = !this.dirH
+        }
+      }
     },
     goPrev() {
       let next = this.currentFocus - (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`] && (!this.dirH || this.currentFocus%this.width))
+      if (this.$refs[`cell${next}`] && (!this.dirH || this.currentFocus%this.width)){
         this.$refs[`cell${next}`][0].focus()
+        if (this.layout[next].turnv || this.layout[next].turnh) {
+          this.dirH = !this.dirH
+        }
+      }
     },
     goN() {
       this.posCaretAtEnd()
