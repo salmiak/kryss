@@ -23,7 +23,7 @@
         @keydown.left="goW"
         @keydown.right="goE"
         @keydown.enter="goS"
-        @keydown.delete="clearAndGoPrev"
+        @keyup.delete="clearAndGoPrev"
         @keydown.space="dirH = !dirH"
         @focus="updateFocus(idx)"
         @blur="clearFocus"
@@ -122,15 +122,17 @@ export default {
   methods: {
     posCaretAtEnd() {
       let el = this.$refs[`cell${this.currentFocus}`][0]
-      // Source: https://davidwalsh.name/caret-end
-      if (typeof el.selectionStart == "number") {
-        el.selectionStart = el.selectionEnd = el.value.length;
-      } else if (typeof el.createTextRange != "undefined") {
-        el.focus();
-        var range = el.createTextRange();
-        range.collapse(false);
-        range.select();
-      }
+      setTimeout (() => {
+        // Source: https://davidwalsh.name/caret-end
+        if (typeof el.selectionStart == "number") {
+          el.selectionStart = el.selectionEnd = el.value.length;
+        } else if (typeof el.createTextRange != "undefined") {
+          el.focus();
+          var range = el.createTextRange();
+          range.collapse(false);
+          range.select();
+        }
+      }, 50)
     },
     updateFocus(idx) {
       this.currentFocus = idx;
