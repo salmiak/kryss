@@ -163,7 +163,7 @@ export default {
       if (this.$refs[`cell${next}`] && (!this.dirH || next%this.width)) {
         this.$refs[`cell${next}`][0].focus()
         if (this.layout[next].turnv || this.layout[next].turnh) {
-          this.dirH = !this.dirH
+          this.dirH = (this.layout[next].turnh !== undefined)
         }
       }
     },
