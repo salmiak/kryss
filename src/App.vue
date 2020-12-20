@@ -108,7 +108,8 @@ p {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  min-width: 100vw;
+  padding: 1rem 0;
+  /* min-width: 100vw; */
 }
 a.gatherlink {
   position: fixed;

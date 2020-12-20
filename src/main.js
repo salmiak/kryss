@@ -33,7 +33,7 @@ new Vue({
         this.cells = []
         this.width = 0
         this.gatherlink = undefined
-        return this.title = this.$route.path==='/404'?"Fel kryssnamn, försök igen ":"Ange kryssnamn"
+        return this.title = this.$route.name
       }
 
       let publicPath = process.env.BASE_URL
