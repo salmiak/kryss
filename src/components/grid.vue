@@ -160,7 +160,12 @@ export default {
     },
     goNext() {
       let next = this.currentFocus + (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`] && (!this.dirH || next%this.width)) {
+      console.log(this.$refs[`cell${this.currentFocus}`]) // eslint-disable-line no-console
+      if ( this.$refs[`cell${next}`] &&     // If the target i empty or out of bounds
+           (!this.dirH || next%this.width) &&  // If the target is beyond the side edge
+           !(this.dirH && this.$root.cells[this.currentFocus].endh) &&
+           !(!this.dirH && this.$root.cells[this.currentFocus].endv)
+        ){
         this.$refs[`cell${next}`][0].focus()
         if (this.layout[next].turnv || this.layout[next].turnh) {
           this.dirH = (this.layout[next].turnh !== undefined)
@@ -169,7 +174,11 @@ export default {
     },
     goPrev() {
       let next = this.currentFocus - (this.dirH?1:this.width);
-      if (this.$refs[`cell${next}`] && (!this.dirH || this.currentFocus%this.width)){
+      if ( this.$refs[`cell${next}`] &&
+           (!this.dirH || this.currentFocus%this.width) &&
+           !(this.dirH && this.$root.cells[next].endh) &&
+           !(!this.dirH && this.$root.cells[next].endv)
+         ){
         this.$refs[`cell${next}`][0].focus()
         if (this.layout[next].turnv || this.layout[next].turnh) {
           this.dirH = !this.dirH
