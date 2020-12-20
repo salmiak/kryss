@@ -160,7 +160,6 @@ export default {
     },
     goNext() {
       let next = this.currentFocus + (this.dirH?1:this.width);
-      console.log(this.$refs[`cell${this.currentFocus}`]) // eslint-disable-line no-console
       if ( this.$refs[`cell${next}`] &&     // If the target i empty or out of bounds
            (!this.dirH || next%this.width) &&  // If the target is beyond the side edge
            !(this.dirH && this.$root.cells[this.currentFocus].endh) &&
