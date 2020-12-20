@@ -54,7 +54,7 @@
     {"endh": true, "turnv": true},
     {"endh": true},
     {"nbr": 9},
-    {"endh": true, "turnv": true},
+    0,
     {"endh": true},
     {"nbr": 10},
 
