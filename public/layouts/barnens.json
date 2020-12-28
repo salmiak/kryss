@@ -22,7 +22,7 @@
     0,
 
     0,
-    1,
+    {"endh": true},
     {"endv": true, "endh": true},
     {"endv": true, "turnh": true},
     1,
