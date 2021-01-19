@@ -1,28 +1,43 @@
 <template lang="html">
   <div>
-    <textarea
-      placeholder="Klistra in CSV"
-      v-model="csvText"
-      :class="{filled: csvText}"></textarea>
 
-    <div class="manus" v-if="csvText">
-      <div v-for="(row,i) in contentArray" :key="i">
-        <hr v-if="row.Nbr && i" />
-        <h2 v-if="row.Nbr" >{{row.Nbr}}</h2>
-        <p v-if="row.HintBefore">{{row.HintBefore}}</p>
-        <p v-if="row.Song" class="muted">{{row.Song}}</p>
-        <p v-if="row.HintAfter" class="mb">{{row.HintAfter}}</p>
-        <p v-if="row.Pos" class="muted">{{row.Pos}}, {{row.Len}} bokstäver - {{row.Answer.toUpperCase()}}</p>
-        <p v-if="row.Comment" class="small muted">{{row.Comment}}</p>
-      </div>
+    <div v-if="editMode || !csvText || !contentValidates">
+      <textarea
+        placeholder="Klistra in CSV"
+        v-model="csvText"
+        @blur = "editMode = false"
+        @focus = "editMode = true"></textarea>
+
+        <div class="manus">
+          <h2>{Nbr}</h2>
+          <p>{HintBefore}</p>
+          <p class="muted">{Song}</p>
+          <p class="mb">{HintAfter}</p>
+          <p class="small muted">{Pos}, {Len} bokstäver - {Answer}</p>
+        </div>
     </div>
 
-    <div class="manus" v-else>
-      <h2>{Nbr}</h2>
-      <p>{HintBefore}</p>
-      <p class="muted">{Song}</p>
-      <p class="mb">{HintAfter}</p>
-      <p class="small muted">{Pos}, {Len} bokstäver - {Answer}</p>
+    <div v-else>
+      <span
+        class="btn"
+        @click="editMode = true"
+      >Redigera</span>&nbsp;
+      <span
+        class="btn"
+        @click="csvText = '', editMode = true"
+      >Rensa</span>
+
+      <div class="manus" v-if="csvText">
+        <div v-for="(row,i) in contentArray" :key="i">
+          <hr v-if="row.Nbr && i" />
+          <h2 v-if="row.Nbr" >{{row.Nbr}}</h2>
+          <p v-if="row.HintBefore">{{row.HintBefore}}</p>
+          <p v-if="row.Song" class="muted">{{row.Song}}</p>
+          <p v-if="row.HintAfter" class="mb">{{row.HintAfter}}</p>
+          <p v-if="row.Pos" class="muted">{{row.Pos}}, {{row.Len}} bokstäver - {{row.Answer.toUpperCase()}}</p>
+          <p v-if="row.Comment" class="small muted">{{row.Comment}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +51,8 @@ export default {
       storedText = JSON.parse(localStorage.getItem('script-csvText'))
     }
     return {
-      csvText: storedText || undefined
+      csvText: storedText || undefined,
+      editMode: !(storedText)
     }
   },
   watch: {
@@ -149,8 +165,15 @@ export default {
       });
 
       return outputArray;
+    },
+    contentValidates() {
+      let keys = this.csvArray[0]
+      return keys.indexOf('Nbr') !== -1 &&
+        keys.indexOf('HintBefore') !== -1 &&
+        keys.indexOf('Song') !== -1 &&
+        keys.indexOf('HintAfter') !== -1 &&
+        keys.indexOf('Pos') !== -1
     }
-
   }
 
 }
