@@ -31,11 +31,11 @@
         <div v-for="(row,i) in contentArray" :key="i">
           <hr v-if="row.Nbr && i" />
           <h2 v-if="row.Nbr" >{{row.Nbr}}</h2>
-          <p v-if="row.HintBefore">{{row.HintBefore}}</p>
-          <p v-if="row.Song" class="muted">{{row.Song}}</p>
-          <p v-if="row.HintAfter" class="mb">{{row.HintAfter}}</p>
-          <p v-if="row.Pos" class="muted">{{row.Pos}}, {{row.Len}} bokstäver - {{row.Answer.toUpperCase()}}</p>
-          <p v-if="row.Comment" class="small muted">{{row.Comment}}</p>
+          <vue-markdown v-if="row.HintBefore">{{row.HintBefore}}</vue-markdown>
+          <vue-markdown v-if="row.Song" :anchorAttributes="{target: '_blank'}" class="muted">{{row.Song}}</vue-markdown>
+          <vue-markdown v-if="row.HintAfter" class="mb">{{row.HintAfter}}</vue-markdown>
+          <vue-markdown v-if="row.Pos" class="muted">{{row.Pos}}, {{row.Len}} bokstäver - {{row.Answer.toUpperCase()}}</vue-markdown>
+          <vue-markdown v-if="row.Comment" class="small muted">{{row.Comment}}</vue-markdown>
         </div>
       </div>
     </div>
@@ -43,8 +43,13 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
   name: "ScriptGenerator",
+  components: {
+    VueMarkdown
+  },
   data() {
     let storedText
     if (localStorage.getItem('script-csvText')) {
@@ -179,7 +184,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 * {
   box-sizing: border-box;
 }
@@ -234,7 +239,7 @@ textarea.filled {
 .manus p {
   margin: 1rem 0;
 }
-.manus p.mb {
+.manus .mb p {
   margin-bottom: 2rem;
 }
 .manus hr {
@@ -242,12 +247,15 @@ textarea.filled {
   border-top: 1px solid var(--clr-fg);
   margin: 3rem 0;
 }
+.manus strong {
+  font-weight: 900;
+}
 .muted {
   opacity: 0.5;
   font-style: italic;
   padding-left: 3rem;
 }
-.manus p.small {
+.manus .small p {
   margin-top: -0.5rem;
   font-size: 0.8em;
   line-height: 1em;
