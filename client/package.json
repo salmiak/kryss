@@ -10,10 +10,12 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "core-js": "^3.6.5",
+    "socket.io-client": "^2.4.0",
     "vue": "^2.6.11",
     "vue-markdown": "^2.2.4",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-socket.io": "^3.0.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

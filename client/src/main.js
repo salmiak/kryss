@@ -2,9 +2,28 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App.vue'
 import router from './router'
+import VueSocketIO from 'vue-socket.io'
 
 Vue.use(VueResource);
 Vue.config.productionTip = false
+
+// https://www.digitalocean.com/community/tutorials/vuejs-vue-socketio
+// https://medium.com/js-dojo/build-a-real-time-chat-app-with-vuejs-socket-io-and-nodejs-714c8eefa54e
+// https://www.telerik.com/blogs/real-time-data-visualization-using-vue-and-socket.io
+
+Vue.use(new VueSocketIO({
+    debug: true,
+    connection: 'localhost:3000',
+    /* vuex: {
+        store,
+        actionPrefix: 'SOCKET_',
+        mutationPrefix: 'SOCKET_'
+    },*/
+    options: {
+      transports: ['websocket']
+      //path: "/my-app/"
+    } //Optional options
+}))
 
 new Vue({
   render: h => h(App),
