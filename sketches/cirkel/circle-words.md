@@ -3,9 +3,9 @@ Cirkusmusik
 Circle of life - Elton John
 Circle - Slipknot
 The circle game - Joni Michel (Cover: https://open.spotify.com/track/0TTg0rW47heYyrLO7fA2ey?si=05d9dd2cea4f422c)
-Ring of fire - Johnny cash
+Ring of fire - Johnny cash - Joaquin Phoenix - San Quentin Öståker
 Ring my bell - Anita Ward
-Lord of the ring - may it be - enya 
+Lord of the rings - may it be - enya 
 Ringaren i NotreDame 
 Ring the alarm - Beyoncé
 Singel ladies (put a ring on it) - Beyoncé
