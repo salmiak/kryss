@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <a
+    <!--<a
       :href="gatherlink"
       target="_blank"
       class="gatherlink"
@@ -10,7 +10,7 @@
       <img src="https://gather.town/images/site/white_grape.png">
       <span>Öppna spelrum</span>
       <arrow dir="e" />
-    </a>
+    </a>-->
     <h1 v-if="$root.title">{{$root.title}}</h1>
     <router-view :key="refreshKey"/>
     <p v-if="$root.width">Navigera med <arrow dir="w" /> <arrow dir="n" /> <arrow dir="s" /> <arrow dir="e" />  och byt skrivriktning med [mellanslag]. <span class="btn" @click="clearValues">Rensa planen</span><br/>Obs! När du fyller i planen sparas den som en kaka på din dator.</p>
